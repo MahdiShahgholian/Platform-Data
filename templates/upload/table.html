@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+</head>
+<body>
+    <h1>Choose a table</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="csv_list">Select a table:</label>
+            <select id="csv_list" name="selected_csv">
+                {% for csv in user_csvs %}
+                    <option value="{{ csv.id }}">{{ csv.file_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <button type="submit">Show Table</button>
+        </div>
+    </form>
+</body>
+</html>

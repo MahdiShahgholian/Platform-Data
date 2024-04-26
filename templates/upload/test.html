@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Table and Column</title>
+</head>
+<body>
+    <h1>Choose a table and column</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="csv_list">Select a table:</label>
+            <select id="csv_list" name="selected_csv">
+                {% for csv in user_csvs %}
+                    <option value="{{ csv.id }}">{{ csv.file_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="column_list">Select a column:</label>
+            <select id="column_list" name="selected_column">
+                {% for column in columns %}
+                    <option value="{{ column }}">{{ column }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <button type="submit">Show Data</button>
+        </div>
+    </form>
+</body>
+</html>
