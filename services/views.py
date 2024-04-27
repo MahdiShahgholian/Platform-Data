@@ -71,7 +71,7 @@ def train_view(request):
             leaderboard = aml.leaderboard
             results = leaderboard.as_data_frame()
             
-            table = results.to_html()
+            table = results
             # برگرداندن نتایج به صورت JSON
             return render(request, 'services/leaderboard.html', {'leaderboard': table})
         

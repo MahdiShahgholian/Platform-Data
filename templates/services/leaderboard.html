@@ -4,11 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leaderboard</title>
+    <!-- لینک کتابخانه Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Leaderboard</h1>
-    
-        {{leaderboard }}
-             
+    <div class="container">
+        <h1>Leaderboard</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <!-- نام ستون‌ها -->
+                        <th>رتبه</th>
+                        <th>مدل</th>
+                        <th>امتیاز</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- اطلاعات ردیف‌ها -->
+                    {% for index, row in leaderboard.iterrows %}
+                        <tr>
+                            <td>{{ index|add:1 }}</td>
+
+                            <td>{{ row.model_id }}</td>
+                            <td>{{ row.auc }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- لینک اسکریپت‌های Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+<div class="container">
+    <h1>Leaderboard</h1>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <!-- نمایش نام ستون‌ها -->
+                    {% for column_name in column_names %}
+                        <th>{{ column_name }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                <!-- نمایش رکوردها -->
+                {% for index, row in leaderboard.iterrows %}
+                    <tr>
+                        <!-- نمایش مقادیر مربوط به هر ستون -->
+                        {% for column_name in column_names %}
+                            <td>{{ row.column_name }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
