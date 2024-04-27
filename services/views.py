@@ -13,7 +13,11 @@ def services_view(request):
     return render(request, 'services/index.html')
 
 def ml_view(request):
-    return render(request, 'services/ml.html')
+    return render(request, 'services/machine_learning.html')
+
+def arka_view(request):
+    return render(request, 'services/arka.html')
+
 
 def import_view(request):
     if request.method == "POST":
